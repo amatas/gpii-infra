@@ -22,11 +22,11 @@ dev:
   script:
     - cd dev
     - bundle install --path "vendor/bundle"
-    - rake
+    - USER=ci TF_VAR_environment=dev-ci rake
   after_script:
     # Clean up even if something failed.
     - cd dev
-    - rake destroy
+    - USER=ci TF_VAR_environment=dev-ci rake destroy
 
 promote-to-stg:
   stage: promote-to-stg
